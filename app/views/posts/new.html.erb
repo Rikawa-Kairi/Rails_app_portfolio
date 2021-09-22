@@ -1,0 +1,14 @@
+<h1>新規投稿ページ</h1>
+<%= form_with url: "/posts/create" do |form| %>
+  <%= form.text_field :title %>
+  <%= form.text_area :content%>
+  <%= form.number_field :price%>
+  市区群:
+  <%= form.select :city_id, { '豊島区': "豊島区", '新宿区': "新宿区", '渋谷区': "渋谷区", '品川区': "品川区"},{ include_blank: '選択してください' },{ id: 'js_city_category' , required: true } %>
+  駅名:
+  <%= form.select :town_id, {},{ include_blank: '選択してください' },{ id: 'js_town_id' , required: true } %>
+<%# form.select :title,語尾のtitleがnameになる %>
+  <%= form.submit '投稿する' %>
+<% end %>
+  <%= link_to "戻る", "/" %>
+

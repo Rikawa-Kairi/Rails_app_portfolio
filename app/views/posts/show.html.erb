@@ -1,0 +1,12 @@
+<div class = "postsshow">
+  <div>
+    <%= @post.content %>
+  </div>
+  <div class = "edit_bot">
+    <%= link_to("編集","/posts/#{@post.id}/edit") %>
+    <%= link_to("削除","/posts/#{@post.id}/destroy",{method: "post",class: "destroylink"}) %>
+  </div>
+</div>
+<div>
+  <%=link_to("戻る","/")%>
+</div>

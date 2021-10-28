@@ -1,6 +1,10 @@
-<h1 id="hello">トップページ</h1>
+<div class="background">
+  <p class="index_top">必要なものを近くのお店から</p>
+  <p class="index_topp">借りよう</p>
+</div>
 <% @posts.each do |post| %>
   <div>
-    <%= link_to(post.content,"/posts/#{post.id}/show") %>
+    <%= link_to(post.content, post_path(post)) %>
+    <div><%= image_tag post.image.to_s, class:"image" %></div>
   </div>
 <% end %>

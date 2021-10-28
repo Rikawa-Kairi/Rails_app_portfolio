@@ -1,14 +1,69 @@
 <h1>新規投稿ページ</h1>
-<%= form_with url: "/posts/create" do |form| %>
+<%= form_with model: @post do |form| %>
   <%= form.text_field :title %>
   <%= form.text_area :content%>
   <%= form.number_field :price%>
+  <%= form.label :image_name %>
+  <%= form.text_field :image_name %>
+  <%= form.label :image %>
+  <%= form.file_field :image %>
+  都道府県:
+  <%= form.select :prefectures, {'東京': '東京'},{ include_blank: '選択してください' },{ id: 'prefectures' , required: true } %>
   市区群:
-  <%= form.select :city_id, { '豊島区': "豊島区", '新宿区': "新宿区", '渋谷区': "渋谷区", '品川区': "品川区"},{ include_blank: '選択してください' },{ id: 'js_city_category' , required: true } %>
+  <%= form.select :city_id, { 
+'足立区': '足立区',
+'荒川区': '荒川区',
+'板橋区': '板橋区',
+'江戸川区': '江戸川区',
+'大田区': '大田区',
+'葛飾区': '葛飾区',
+'北区': '北区',
+'江東区': '江東区',
+'品川区': '品川区',
+'渋谷区': '渋谷区',
+'新宿区': '新宿区',
+'杉並区': '杉並区',
+'墨田区': '墨田区',
+'世田谷区': '世田谷区',
+'台東区': '台東区',
+'中央区': '中央区',
+'千代田区': '千代田区',
+'豊島区': '豊島区',
+'中野区': '中野区',
+'練馬区': '練馬区',
+'文京区': '文京区',
+'港区': '港区',
+'目黒区': '目黒区',
+'昭島市': '昭島市',
+'あきる野市': 'あきる野市',
+'稲城市': '稲城市',
+'青梅市': '青梅市',
+'清瀬市': '清瀬市',
+'国立市': '国立市',
+'小金井市': '小金井市',
+'国分寺市': '国分寺市',
+'小平市': '小平市',
+'狛江市': '狛江市',
+'立川市': '立川市',
+'多摩市': '多摩市',
+'調布市': '調布市',
+'西東京市': '西東京市',
+'八王子市': '八王子市',
+'羽村市': '羽村市',
+'東久留米市': '東久留米市',
+'東村山市': '東村山市',
+'東大和市': '東大和市',
+'日野市': '日野市',
+'府中市': '府中市',
+'福生市': '福生市',
+'町田市': '町田市',
+'三鷹市': '三鷹市',
+'武蔵野市': '武蔵野市',
+'武蔵村山市': '武蔵村山市',
+},
+{ include_blank: '選択してください' },{ id: 'js_city_category' , required: true } %>
   駅名:
   <%= form.select :town_id, {},{ include_blank: '選択してください' },{ id: 'js_town_id' , required: true } %>
-<%# form.select :title,語尾のtitleがnameになる %>
   <%= form.submit '投稿する' %>
 <% end %>
-  <%= link_to "戻る", "/" %>
-
+  <%= link_to "戻る", root_path %>

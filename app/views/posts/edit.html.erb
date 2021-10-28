@@ -1,7 +1,8 @@
 <div class = "edit_group">
-<h1>編集</h1>
-  <%= form_with url: "/posts/#{@post.id}/update" do |form|%>
-    <%= form.text_field :content ,value:"#{@post.content}"%>
+<%= flash[:notice] %>
+<h1>編集</h1> 
+  <%= form_with model: @post do |form|%>
+    <%= form.text_area :content ,value:"#{@post.content}"%>
     <%= form.submit "保存"%>
   <%end%>
 </div>

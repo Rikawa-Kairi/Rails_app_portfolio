@@ -4,7 +4,8 @@
     <title>RailsApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,19 +14,31 @@
     <header>
       <div id="header">
         <div id="header_left">
-          <h2>タイトル</h2>
+          <div class="img-logo">
+            <%= image_tag 'スクリーンショット 2021-10-26 16.44.27.png', :size =>'140x25' %>
+          </div>
           <h3>検索する</h3>
         </div>
+
         <nav>
           <ul id="header_right">
-            <li> <%= link_to "新規投稿",'posts/new', data: {"turbolinks" => false} %> </li>
-            <li> <a href="users/member">新規会員登録</a> </li>
-            <li> <a href="#">ログイン </a></li>
-            <li> <a href="#">マイページ </a></li>
+            <% if user_signed_in? %>
+              <li> <%= link_to "新規投稿",'/posts/new', data: {"turbolinks" => false} %> </li>
+              <li> <%= link_to 'プロフィール変更', edit_user_registration_path %> </li>
+              <li> <%= link_to current_user.name, '/'%> </li>
+              <li> <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %> </li>
+              <li> <%= link_to "マイページ",'/'%> </li>
+            <% else %>
+              <li> <%= link_to "マイページ",'/'%> </li>
+              <li> <%= link_to '新規会員登録', new_user_registration_path %> </li>
+              <li> <%= link_to 'ログイン', new_user_session_path %> </li>
+            <% end %>
           </ul>
         </nav>
       </div>
     </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

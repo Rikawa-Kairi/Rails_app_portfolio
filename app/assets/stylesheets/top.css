@@ -6,11 +6,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:　#fff;
+  background-color:#fff;
   box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
   height: 100px;
 }
-
+.background {
+  background-image: url('brick-wall-gd55dc5c95_1920.jpg');
+  height: 800px;
+  background-size: cover;
+}
 #header_left {
   display: flex;
   align-items: center;
@@ -19,6 +23,7 @@ body {
 
 #header_left h2 {
   margin: 0px;
+
 }
 
 #header_left h3 {
@@ -54,3 +59,60 @@ body {
 }
 /* ここまでヘッダー */
 /* ルーティングを書いて新しい投稿ページ作成 */
+.image {
+  width: 300px;
+  height: 300px;
+}
+
+.index_top {
+  font-size: 80px;
+  color: #fff;
+  padding-top: 300px;
+  margin: 0px;
+  text-align: center;
+}
+
+.index_topp{
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+}
+
+/*====================
+スマホを基本設計にする
+ - 〜479px：スマートフォン縦
+ - 480px〜599px：スマートフォン横
+ - 600px〜959px：タブレット
+ - 960px〜1279px：小型PC
+ - 1280px〜：大型PC
+====================*/
+  
+/* 〜479px：SP縦
+------------------------------ */
+ここに基本CSSを書きます。
+モバイルファーストでは、モバイル最小値からPCの大きさに向けて、以降のCSSを書いていきます。
+  
+  
+/* 480px〜599px：SP横
+------------------------------ */
+@media (min-width:480px) and (max-width:599px) { 
+ ここにCSSコードを書く。
+}
+  
+/* 600px〜959px：タブレット
+------------------------------ */
+@media (min-width:600px) and (max-width:959px) {
+ ここにCSSコードを書く。
+}
+  
+/* 960px〜1279px：小型PC
+------------------------------ */
+@media (min-width:960px) and (max-width:1279px) {
+ ここにCSSコードを書く。
+}
+  
+/* 1280px〜：大型PC
+------------------------------ */
+@media (min-width:1280px) {
+ ここにCSSコードを書く。
+}

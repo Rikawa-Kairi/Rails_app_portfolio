@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
 
   
-  # resources :comments, only: [:create, :destroy]
-  #  devise_scope :users do
-  #   get '/users', to: redirect("/users/sign_up")
-  # end
+  resources :comments, only: [:create, :destroy]
+   devise_scope :users do
+    get '/users', to: redirect("/users/sign_up")
+  end
 end

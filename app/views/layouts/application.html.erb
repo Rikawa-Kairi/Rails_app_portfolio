@@ -7,38 +7,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'top', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
-      <div id="header">
-        <div id="header_left">
-          <div class="img-logo">
-            <%= image_tag 'スクリーンショット 2021-10-26 16.44.27.png', :size =>'140x25' %>
-          </div>
-          <h3>検索する</h3>
+      <div id='header_main'>
+        <div id='header_left'>
+          <p id='header_img'> <%= image_tag 'スクリーンショット 2021-10-26 16.44.27.png',  width: '80%'%> </p>
         </div>
-
-        <nav>
-          <ul id="header_right">
-            <% if user_signed_in? %>
-              <li> <%= link_to "新規投稿",'/posts/new', data: {"turbolinks" => false} %> </li>
-              <li> <%= link_to 'プロフィール変更', edit_user_registration_path %> </li>
-              <li> <%= link_to current_user.name, '/'%> </li>
-              <li> <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %> </li>
-              <li> <%= link_to "マイページ",'/'%> </li>
-            <% else %>
-              <li> <%= link_to "マイページ",'/'%> </li>
-              <li> <%= link_to '新規会員登録', new_user_registration_path %> </li>
-              <li> <%= link_to 'ログイン', new_user_session_path %> </li>
-            <% end %>
-          </ul>
-        </nav>
+        <div id='header_right'>
+          <button type="button" class="btn js-btn">
+            <span class="btn-line"></span>
+          </button>
+          <nav id="header_nav">
+            <ul id="header_list">
+              <% if user_signed_in? %>
+                <li class="header_menu"> <%= link_to '新規投稿','/posts/new', data: {"turbolinks" => false} %> </li>
+              <% else %>
+                <li class="header_menu"> <%= link_to '新規会員登録', new_user_registration_path %> </li>
+                <li class="header_menu"> <%= link_to 'ログイン', new_user_session_path %> </li>
+              <% end %>
+          </nav>
+          <nav>
+            <ul class="menu">
+              <% if user_signed_in? %>
+                <li class="menu-list"> <%= link_to '新規投稿','/posts/new', data: {"turbolinks" => false} %> </li>
+                <li class="menu-list"> <%= link_to 'プロフィール変更', edit_user_registration_path %> </li>
+                <li class="menu-list"> <%= link_to current_user.name, '/'%> </li>
+                <li class="menu-list"> <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %> </li>
+                <li class="menu-list"> <%= link_to "マイページ",'/'%> </li>
+              <% else %>
+                <li class="menu-list"> <%= link_to "マイページ",'/'%> </li>
+                <li class="menu-list"> <%= link_to '新規会員登録', new_user_registration_path %> </li>
+                <li class="menu-list"> <%= link_to 'ログイン', new_user_session_path %> </li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <main>
+      <div id='test'>
+        <p>あああ</p>
+      </div>
+    </main>
+    <script>
+      $(function () {
+        $('.js-btn').on('click', function () {        // js-btnクラスをクリックすると、
+          $('.menu , .btn-line').toggleClass('open'); // メニューとバーガーの線にopenクラスをつけ外しする
+        })
+      });
+    </script>
+
     <%= yield %>
   </body>
 </html>

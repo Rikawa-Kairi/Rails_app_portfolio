@@ -1,12 +1,30 @@
-<div id='main_back_img'>
-  <div class='main_img_title'>
-    <p class='top_main_title'>必要なものを近くのお店から</p>
-    <p class='top_read_title'>借りよう</p>
+<div id='main'>
+  <div id="main_top">
+    <div id='main_back_img'>
+      <p class='top_main_title'>飲食店のお酒や備品など緊急で必要な時に近くのお店に助けを求めよう!!</p>
+    </div>
   </div>
+    <div id='main_explanation'>  <%# 要修正 %>
+      <h3 id="main_sab_title">ぐるめらいんとは？<br>
+      <p id="main_sab_title_bottom">近くの飲食店と酒類や備品の取引ができるWebサービスです!!</p></h3>
+      <%= image_tag 'y0671.png',width:"30%"%>
+    </div>
+  <section id='main_post_list'>
+    <% @posts.each do |post| %>
+    <% if post.image? %>
+      <div id='index_image_list'>
+        <%= link_to image_tag(post.image.to_s, id:"post_image"), post_path(post) %>
+        <div id='index_town_id'><%= post.city_id%></div>
+      </div>
+      <% else %>
+        <div id='index_image_list_default'>
+          <%= link_to image_tag("y0974.png", id:"post_image_default"), post_path(post) %>
+          <div id='index_town_id_default'><%= post.city_id%></div>
+        </div>
+      <% end %>
+    <% end %>
+  </section>
 </div>
-<% @posts.each do |post| %>
-  <div>
-    <%= link_to(post.content, post_path(post)) %>
-    <div><%= image_tag post.image.to_s, class:"image" %></div>
-  </div>
-<% end %>
+
+
+<%# <div id='index_image'> </div> %>

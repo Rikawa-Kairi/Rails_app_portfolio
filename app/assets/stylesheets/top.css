@@ -12,10 +12,6 @@
 html {
   font-size: 62.5%;
 }
-.image {
-  width: 300px;
-  height: 300px;
-}
 
 * {
   box-sizing: border-box;
@@ -41,35 +37,89 @@ button {
   appearance: none;
 }
 
-main {
-  padding: 0px;
-}
-
 #header_main {
   width: 100%;
   height: 68px;
   display: flex;
+  align-items: center;
   padding: 0px 28px;
   border-bottom: 1px solid #e5e5e5;
   position: fixed;
   background-color: white;
+  z-index: 10;
 }
+
 
 #header_left {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   height: 100%;
-  width: 50%;
-
+  width: 33%;
+  margin-right: auto;
+  margin-left: auto;
+}
+#header_img img{
+  width: 80%;
 }
 
-#header_right {
-  height: 100%;
-  width: 50%;
+#header_center {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 33%;
+  height: 100%;
+  /* z-index: 5; */
+}
+#form_f {
+  display: flex;
+  width: 100%;
+  max-width: 250px;
+  position: relative;
+}
+
+#text_f {
+  box-sizing: border-box;
+  border: 2px solid #999;
+  display: block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  height: 2.3em;
+  width: 25vw;
+  overflow: hidden;
+}
+
+#text_f::placeholder{
+  font-size: 1rem;
+}
+
+.fa-search{
+  cursor: pointer;
+  font-size: 1.3em;
+  border: none;
+  background: none;
+  color: rgb(90, 220, 90);
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  outline : none;
+  top: 30%;
+  left: 70%;
+}
+
+
+
+
+
+
+#header_right {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 33%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #header_img {
@@ -77,35 +127,37 @@ main {
   min-width: 110px;
 }
 /* --------------------------------------------------------------------- */
-#test {  /*mainタグを引き下げ*/
+main {  /*mainタグを引き下げ*/
   padding-top: 68px;
-}
+} 
 
 #header_list {
   display: flex;
   list-style: none;
 }
 
-#header_list li {
-  padding-right: 10px;
-}
-
 #header_nav {
-  padding-right: 10vw;
+  padding-left: 2rem;
 }
 
 .header_menu a {
-  color: #333;
+  color: gray;
   text-decoration: none;
+  font-weight: bolder;
 }
+
 /**************** 以下、ハンバーガーボタンのスタイリング ****************/
 .btn {
   /* ボタンの配置位置  */
-  position: fixed;
-  top: 24px;
-  right: 29px;
+
+/* =================================== */
+  /* position: fixed;
+  top: 22px;
+  right: 29px; */
+/* =================================== */
+
   /* 最前面に */
-  z-index: 10;
+  z-index: 1;
   /* ボタンの大きさ  */
   width: 32px;
   height: 24px;
@@ -162,9 +214,8 @@ main {
 }
 
 
-
-
 /**************** ここまで、ハンバーガーボタンのスタイリング ****************/
+
 /**************** 以下、メニューのスタイリング ****************/
 .menu {
   /* メニューを縦に */
@@ -172,10 +223,11 @@ main {
   flex-direction: column;
   position: fixed;
   /* メニューの位置マイナス指定で画面外に */
+  top: 0px;
   right: -70%;
   width: 70%;
   height: 100vh;
-  background-color: rgba(167, 148, 58, .7);
+  background-color:   rgb(225, 245, 225, 0.9);
   color: #efefef;
   transition: .3s;
 }
@@ -193,20 +245,74 @@ main {
   cursor: pointer;
   transition: .3s;
 }
+
+.menu-list a {
+  color: gray;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.menu-list a:hover {
+  text-decoration: underline;
+}
+
+
 /***** メニューオープン時位置0にして画面内に *****/
 .menu.open {
   position: absolute;
   right: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 600px〜959px：タブレット
 ------------------------------ */
-@media (min-width:800px) and (max-width:959px) {
+@media (min-width:600px) and (max-width:959px) {
   html {
-    font-size: 87.5%;
+    font-size: 84.5%;
   }
+
+  .fa-search{
+    cursor: pointer;
+    font-size: 1rem;
+    border: none;
+    background: none;
+    color: rgb(90, 220, 90);
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    outline : none;
+    top: 30%;
+    left: 70%;
+  }
+  
+
+
+}
+
+/* 1280px〜：PC
+------------------------------ */
+@media (min-width:960px) {
+  html {
+    font-size: 100%;
+  }
+
   .btn {
     display: none;
   }
+
   .menu {
     /* メニューを横に */
     display: flex;
@@ -214,19 +320,35 @@ main {
     position: fixed;
     top: 0;
     right: 0;
-    width: 100%;
-    height: 100px;
+    width: 60%;
+    height: 67px;
+    background-color: white;
   }
-}
 
-/* 1280px〜：PC
------------------------------- */
-@media (min-width:1280px) {
-  html {
-    font-size: 100%;
+  .fa-search{
+    cursor: pointer;
+    font-size: 1rem;
+    border: none;
+    background: none;
+    color: rgb(90, 220, 90);
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    outline : none;
+    top: 25%;
+    left: 85%;
   }
-   /*ここからヘッダーの調整*/
-  
+
+  #header_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+    height: 100%;
+    /* z-index: 5; */
+    margin-right: 50vw;
+  }
+
 }
 
 /**************** ここまで、メニューのスタイリング ****************/

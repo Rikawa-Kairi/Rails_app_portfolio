@@ -1,32 +1,100 @@
-<div class = "postsshow">
-  <div>
-    <%= @post.content %>
-    <%= @user.name%>
-  </div>
-  <% if current_user.id == @post.user_id %>
-    <div class = "edit_bot">
-      <%= link_to("編集", edit_post_path(@post)) %>
-      <%= link_to("削除",post_path(@post),{method: :delete, class: "destroylink",data: { confirm: '本当にいいですか?' }}) %>
+<div id="main_post_show">
+  <div id="post_show">
+    <div id="show_top_title">
+      <h1 id="show_title">商品詳細</h1>
     </div>
-  <%end%>
-</div>
-<div>
-  <h2>コメント一覧</h2>
-<% @comments.each do |c| %>
-  <div>
-    <%= link_to("#{c.user.name}", edit_user_registration_path) %>
-    <%= c.comment_content %>
-    <hr>
-  </div>
-<% end %>
+    <div id="show_img_section">
+      <% if @post.image? %>
+        <div class="show_img_list">
+          <%= link_to image_tag(@post.image.to_s, id:"show_img"), post_path(@post) %>
+        </div>
+      <% else %>
+        <div class="show_img_list">
+          <%= link_to image_tag("y0974.png", id:"show_img_default"), post_path(@post) %>
+        </div>
+      <% end %>
+    </div>
 
-<%= form_with model: [@post, @comment] do |f| %>
-  <%= f.text_field :comment_content %>
-  <%= f.hidden_field :post_id, value: @post.id %> #追加
-  <br>
-  <%= f.submit 'コメントする' %>
-<% end %>
-</div>
-<div>
-  <%=link_to("戻る",root_path)%>
+    <section id="post_show_data">
+      <div id="show_data_list">
+
+        <div id="show_top_title">
+          <p class="show_data_title"><%= @post.title%></p>
+          <div class="show_data_price">
+            <span>¥<%= @post.price.to_s(:delimited) %></span>
+            <span id="show_price_tax">&#40;税込み&#41;</span>
+          </div>
+        </div>
+
+        <div id="show_data_content">
+          <p class="show_wrapper_title">商品の内容</p>
+          <div class="show_wrapper_text">
+            <p><%= @post.content %></p>
+            <p id="show_post_time"><%= time_ago_in_words(@post.updated_at)+"前"%></p>
+          </div>
+        </div>
+
+        <div id="show_data_user">
+          <p class="show_wrapper_title">取引場所</p>
+          <div class="show_wrapper_text">
+            <p><span class="show_city_span">市区郡</span>-<%= @post.city_id%></p>
+            <p><span class="show_city_span">駅名</span>-<%= @post.town_id %><p>
+          </div>
+          <p class="show_wrapper_title show_wrapper_name">出品者</p>
+          <div class="show_wrapper_text">
+            <p><%= @user.name%></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    
+    <div class = "edit_bot">
+      <% if current_user.id == @post.user_id %>
+        <p class="show_edit_bot"><%= link_to("商品の編集",edit_post_path(@post),data: {"turbolinks" => false}, class:"test") %></p>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div id="show_comment_section">
+    <p id="show_comment_title">コメント一覧</p>
+
+    <div>
+      <% @comments.each do |c| %>
+        <div id="show_comment_wrapper">
+          <%= link_to("#{c.user.name}", edit_user_registration_path, id:"show_comment_name") %>
+          <div id="show_comment_main">
+            <p id=show_comment_content><%= c.comment_content %></p>
+            <div id="show_comment_content_secondary">
+              <p id="show_comment_time"><%= time_ago_in_words(c.updated_at)+"前"%></p>
+              <% if c.user.id == current_user.id %>
+                <%= link_to post_comment_path(@post, c), {method: :delete, data: {confirm: 'コメントを削除しますか？'}} do %>
+                  <i class="fas fa-trash-alt"></i>
+                <%end%>
+              <%end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+    <div id="show_comment_post">
+      <%= form_with model: [@post, @comment] do |f| %>
+        <%= f.text_area :comment_content, placeholder: "コメントする", id:"comment_text_area" %>
+        <p id="comment_area_limit">1000文字まで</p>
+        <%= f.hidden_field :post_id, value: @post.id %> 
+        <div id="show_comment_submit">
+          <label for="comment_submit">
+            <div id="comment_submit_section">
+              <%= f.submit 'コメントする', id:"comment_submit", style:"display:none"%>
+              <span id="comment_submit_span">コメントを送信する</span>
+            </div>
+          </label>
+        </div>
+      <% end %>
+    </div>
+    <div>
+    <%=link_to("戻る",root_path,id:"ts")%>
+  </div>
 </div>

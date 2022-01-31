@@ -1,0 +1,29 @@
+<div id='main'>
+  <div class="search-form">
+    <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+
+  <div id='main_back_img'>
+    <p class='top_main_title'>必要なものを近くのお店から</p>
+    <p class='top_read_title'>借りよう</p>
+  </div>
+
+  <section id='main_post_list'>
+    <% @posts.each do |post| %>
+    <% if post.image? %>
+      <div id='index_image_list'>
+        <%= link_to image_tag(post.image.to_s, id:"post_image"), post_path(post) %>
+        <div id='index_town_id'><%= post.city_id%></div>
+      </div>
+      <% else %>
+        <div id='index_image_list_default'>
+          <%= link_to image_tag("default.png", id:"post_image_default"), post_path(post) %>
+          <div id='index_town_id_default'><%= post.city_id%></div>
+        </div>
+      <% end %>
+    <% end %>
+  </section>
+</div>

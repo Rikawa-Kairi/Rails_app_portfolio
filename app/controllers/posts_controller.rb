@@ -5,6 +5,15 @@ class PostsController < ApplicationController
     @posts = Post.all.order(updated_at: 'desc')
   end
 
+  def search
+    @posts = Post.search(params[:keyword]).order(updated_at: 'desc')
+    @keyword = params[:keyword]
+    render :index
+  end
+
+  def inquiry
+  end
+
   def new
     @post = Post.new
   end
@@ -14,7 +23,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_path
     else
-      redirect_to root_path
+      render new_post_path
     end
   end
 
@@ -34,6 +43,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @town_id = @post.town_id
   end
 
   def update
@@ -42,15 +52,19 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def mypage
+    @posts = Post.where(user_id: current_user.id).includes(:user).order("created_at DESC")
+  end
 
   def ensure_correct_user
     @post = Post.find(params[:id])
      unless @post.user_id == current_user.id
-      flash[:notice] = "権限がありません"
-     redirect_to ('/')
+     redirect_to root_path, alert: "権限がありません"
    end
   end
 
+
+  
   private
   def post_params
     params.require(:post).permit(:title, :content, :price, :image_name, :image, :prefectures, :city_id, :town_id ).merge(user_id: current_user.id)
@@ -58,7 +72,7 @@ class PostsController < ApplicationController
 
   private
   def update_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:title, :content, :price, :image, :prefectures, :city_id, :town_id)
   end
   
 end

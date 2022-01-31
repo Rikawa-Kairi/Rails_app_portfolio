@@ -1,0 +1,8 @@
+.edit_group {
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+#edit_form_wrapper {
+  display: flex;
+  justify-content: center;
+}

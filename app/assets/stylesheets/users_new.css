@@ -1,0 +1,58 @@
+#edit_title {
+  text-align: center;
+}
+
+#devise_new_title {
+  text-align: center;
+}
+
+#devise_login_title {
+  text-align: center;
+}
+
+#devise_password_reset_title {
+  text-align: center;
+}
+#devise_password_edit_title {
+  text-align: center;
+}
+
+.member_registration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#actions_member_link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+#login_password_change_link {
+  width: 75%;
+  max-width: 565px;
+  padding-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: right;
+}
+
+#login_password_change_link a {
+  color: rgb(0, 115, 204);
+  font-weight: bolder;
+}
+
+.new_member_registration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new_member_registration a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bolder;
+}

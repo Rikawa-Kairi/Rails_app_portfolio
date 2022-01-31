@@ -1,0 +1,225 @@
+
+/*====================
+スマホを基本設計にする
+ - 〜479px：スマートフォン縦
+ - 480px〜599px：スマートフォン横
+ - 600px〜959px：タブレット
+ - 960px〜1279px：小型PC
+ - 1280px〜：大型PC
+====================*/
+  
+/* 〜479px：SP縦
+------------------------------ */
+#main_post_form {
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+#form_site_title {
+  text-align: center;
+  padding-top: 3vh;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#post_form_wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#form_main { /*formで一番*/
+  width: 80%;
+}
+
+.post_form {
+  list-style-type: none;
+}
+
+.form_section label {
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.form_section {/*---ここでnew.erbの幅が調節---*/
+  max-width: 565px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 2rem;
+}
+
+#post_title {
+  width: 100%;
+  height: 55px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#post_content {
+  width: 100%;
+  height: 92px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#post_price {
+  width: 100%;
+  height: 55px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#prefectures {
+  width: 100%;
+  height: 55px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#js_city_category {
+  width: 100%;
+  height: 55px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#js_town_id {
+  width: 100%;
+  height: 55px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+label {
+  font-weight: bolder;
+}
+
+/* #post_form_submit {
+margin-top: 300px;
+} */
+
+/*#post_image { なんだコレ
+  border-color: red;
+  width: 100%;
+  border: 1px solid #bbb;
+}*/
+
+#img_label {
+  width: 100%;
+  height: 55px;
+  margin: auto;
+  padding: 10px 16px 8px;
+  border-radius:4px;
+  border: 1px solid rgb(90, 220, 90);
+  background: rgb(255, 255, 245);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.view_box {
+
+}
+.fa-camera {
+  color:rgb(90, 220, 90);
+  
+}
+
+.submit_label {
+  width: 100%;
+  height: 55px;
+  margin: auto;
+  padding: 10px 16px 8px;
+  border-radius:15px;
+  border: 1px solid rgb(90, 220, 90);
+  background:rgb(90, 220, 90);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}/*formにバリデーションをかける*/
+
+#form_submit {
+  color: #fff;
+}
+
+.post_form_span {
+  margin: auto;
+  border-radius:2px;
+  border: 1px solid #ff333f;
+  background: #ff333f;
+  color: #fff;
+
+}
+
+#alert_message {
+  width: 80%;
+  max-width: 565px;
+  list-style: none;
+  color: #ff333f;
+  margin: auto;
+  padding: 10px 16px 8px;
+  border-radius:4px;
+  border: 1px solid #ff333f;
+  background: #fff;
+}
+
+#alert_message li{
+  font-size: 1.1rem;
+}
+
+.field_with_errors {
+  display: contents;
+
+}
+
+.img_preview_box {
+  width: 100%;
+  max-width: 565px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.view_box {
+  position: relative;
+}
+
+.img_view {
+  object-fit: contain;
+  width: 110px;
+  height: 110px;
+  border-radius: 5px;
+  background: #f5f5f5;
+}
+
+.img_del {
+  font-size: 1.5rem;
+  text-decoration: none;
+  position: absolute;
+  left: 0;
+}
+
+.fa-times-circle {
+  position: absolute;
+  color: azure;
+  font-size: 1.8rem;
+  background: #333;
+  border-radius: 3px;
+  opacity: 0.7;
+}
+
+/* 600px〜959px：タブレット
+------------------------------ */
+@media (min-width:600px) and (max-width:959px) {
+  .img_view {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* 1280px〜：PC
+------------------------------ */
+@media (min-width:960px) {
+  .img_view {
+    width: 200px;
+    height: 200px;
+  }
+}

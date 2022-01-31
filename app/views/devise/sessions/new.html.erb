@@ -1,5 +1,4 @@
-<h2>ログイン</h2>
-
+<h2 id="devise_login_title">ログイン</h2>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -19,8 +18,18 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "ログイン" %>
+    <label>
+      <%= f.submit "ログイン", style:"display:none" %>
+      <span id="login_actions_submit">ログイン</span>
+    </label>
   </div>
+  <div class="actions member_registration">
+    <%= link_to "新規会員登録", "/users/sign_up",id: "actions_member_link" %>
+  </div>
+
+  <div id="login_password_change_link">
+    <%= link_to "パスワードをお忘れですか？", "/users/password/new", id:"tt" %>
+  </div>
+
+
 <% end %>
-<%= link_to "新規会員登録", "/users/sign_up" %>
-<%= link_to "パスワードをお忘れですか？", "/users/password/new" %>

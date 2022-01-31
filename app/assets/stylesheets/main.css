@@ -1,21 +1,155 @@
+/*====================
+スマホを基本設計にする
+ - 〜479px：スマートフォン縦
+ - 480px〜599px：スマートフォン横
+ - 600px〜959px：タブレット
+ - 960px〜1279px：小型PC
+ - 1280px〜：大型PC
+====================*/
+  
+/* 〜479px：SP縦
+------------------------------ */
+
+#main {
+  margin: 0 0.5rem 0 0.5rem;
+}
 #main_back_img {
-  background-image: url('brick-wall-gd55dc5c95_1920.jpg');
+  background-image: url('y0670.png');
   background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
-  width: 100%;
-  height: 400px;
+  padding-top: 66.6%;
+  width: 50%;
+  height: 0;
+  border-radius: 5px;
+  position: relative;
+  left: 60%;
+  
 }
 
-.main_img_title {
-  padding-top: 13rem; /*要修正*/
-  font-size: 4rem;
+#main_top {
+  background-color: rgb(248, 248, 240);
+  
+}
+
+.top_main_title {/*要修正が必要。レスポンシブに合わせて文字サイズの変更が必要。maxfont-sizeも決める*/
+  margin: 0px;
   text-align: center;
+  position: absolute;
+  font-size: 2rem;
+  top: 50%;
+  left: -40%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background:linear-gradient(transparent 80%, #FFFF00 0%);
 }
 
-.top_main_title {
-  margin: 0px;
+
+#main_explanation { /*ーーーーーーーーーーーーーーーーーー要修正ーーーーーーーーーーーーーーーーーーーーーーーー*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  background:linear-gradient(transparent 80%, #deffd2 0%);
+  margin-bottom: 1rem;
 }
 
-.top_read_title {
-  margin: 0px;
+
+
+
+
+
+
+
+
+
+
+
+
+#main_post_list { /*一番大きい親要素*/
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+
+#index_image_list { /*画像と最寄り駅名を囲う親要素*/
+  padding: 0.1rem;
+  position: relative;
+}
+#index_image_list_default { /*画像と最寄り駅名を囲う親要素*/
+  padding: 0.1rem;
+  position: relative;
+}
+
+#index_image { /*画像を囲う親要素*/
+  
+}
+
+#post_image { /*画像id*/
+  object-fit: contain;
+  width: 110px;
+  height: 110px;
+  border-radius: 5px;
+  background: #f5f5f5;
+}
+#post_image_default { /*画像id*/
+  object-fit: contain;
+  width: 110px;
+  height: 110px;
+  border-radius: 5px;
+  background: #f5f5f5;
+}
+
+#index_town_id {
+  position: absolute;
+  top: 8rem;
+  font-size: 1.4rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  color: white;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#index_town_id_default {
+  position: absolute;
+  top: 8rem;
+  font-size: 1.4rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  color: white;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+
+
+/* 600px〜959px：タブレット
+------------------------------ */
+@media (min-width:600px) and (max-width:959px) {
+  #post_image {
+    width: 160px;
+    height: 160px;
+  }
+  #post_image_default {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* 1280px〜：PC
+------------------------------ */
+@media (min-width:960px) {
+  #post_image {
+    width: 200px;
+    height: 200px;
+  }
+  #post_image_default {
+    width: 200px;
+    height: 200px;
+  }
 }

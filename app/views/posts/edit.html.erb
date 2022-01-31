@@ -1,8 +1,177 @@
 <div class = "edit_group">
-<%= flash[:notice] %>
-<h1>編集</h1> 
-  <%= form_with model: @post do |form|%>
-    <%= form.text_area :content ,value:"#{@post.content}"%>
-    <%= form.submit "保存"%>
+  <h1 id="edit_title">商品の情報を編集</h1> 
+  <input type="hidden" id="hidden_town_id" value="<%= @town_id%>">
+
+
+  <section id='edit_form_wrapper'>
+  <%= form_with model: @post, id: "form_main" do |form|%>
+    <div class="form_section">
+      <%= form.label :title, "タイトル"%>
+      <div class="post_form"> 
+        <%= form.text_field :title, value:"#{@post.title}" %>
+      </div>
+    </div>
+
+    <div class="form_section">
+      <%= form.label :content, "内容"%>
+      <div class="post_form"> 
+        <%= form.text_area :content ,value:"#{@post.content}"%>
+      </div>
+    </div>
+
+    <div class="form_section">
+      <%= form.label :price, "希望金額"%>
+      <div class="post_form"> 
+        <%= form.number_field :price, value:"#{@post.price}" %>
+      </div>
+    </div>
+    
+    <div class="form_section">
+      <%= form.label :prefectures, "都道府県"%>
+      <div class="post_form"> 
+          <%= form.select :prefectures, {'東京': '東京'},{ include_blank: '選択してください' },{ id: 'prefectures' , required: true}%>
+      </div>
+    </div>
+
+    <div class="form_section">
+      <%= form.label :city_id, "市区郡"%>
+      <div class="post_form"> 
+        <%= form.select :city_id, {
+        '足立区': '足立区',
+        '荒川区': '荒川区',
+        '板橋区': '板橋区',
+        '江戸川区': '江戸川区',
+        '大田区': '大田区',
+        '葛飾区': '葛飾区',
+        '北区': '北区',
+        '江東区': '江東区',
+        '品川区': '品川区',
+        '渋谷区': '渋谷区',
+        '新宿区': '新宿区',
+        '杉並区': '杉並区',
+        '墨田区': '墨田区',
+        '世田谷区': '世田谷区',
+        '台東区': '台東区',
+        '中央区': '中央区',
+        '千代田区': '千代田区',
+        '豊島区': '豊島区',
+        '中野区': '中野区',
+        '練馬区': '練馬区',
+        '文京区': '文京区',
+        '港区': '港区',
+        '目黒区': '目黒区',
+        '昭島市': '昭島市',
+        'あきる野市': 'あきる野市',
+        '稲城市': '稲城市',
+        '青梅市': '青梅市',
+        '清瀬市': '清瀬市',
+        '国立市': '国立市',
+        '小金井市': '小金井市',
+        '国分寺市': '国分寺市',
+        '小平市': '小平市',
+        '狛江市': '狛江市',
+        '立川市': '立川市',
+        '多摩市': '多摩市',
+        '調布市': '調布市',
+        '西東京市': '西東京市',
+        '八王子市': '八王子市',
+        '羽村市': '羽村市',
+        '東久留米市': '東久留米市',
+        '東村山市': '東村山市',
+        '東大和市': '東大和市',
+        '日野市': '日野市',
+        '府中市': '府中市',
+        '福生市': '福生市',
+        '町田市': '町田市',
+        '三鷹市': '三鷹市',
+        '武蔵野市': '武蔵野市',
+        '武蔵村山市': '武蔵村山市',
+        },{selected: "#{@post.city_id}"},{ id: 'js_city_category' , required: true}%>
+      </div>
+    </div>
+
+    <div class="form_section">
+      <%= form.label :town_id, "駅名"%>
+      <div class="post_form"> 
+        <%= form.select :town_id,{},{},{ id: 'js_town_id' , required: true}%>
+      </div>
+    </div>
+
+        <div class="form_section">
+      <label>画像
+        <div class="post_form" id="img_label">
+          <%= form.file_field :image, id: :post_img_file, class: :file, accept: 'image/jpg,image/jpeg,image/png',style:"display:none;"%>
+          <i class="fas fa-camera">画像を選択する</i>
+        </div>
+      </label>
+    </div>
+
+    <div class="img_preview_box">
+      <div class="view_box">
+        <%# ここにimgが挿入される %>
+      </div>
+    </div>
+
+    <div class="form_section">
+      <label>
+        <div class="post_form submit_label">
+          <%= form.submit '変更する', style:"display:none"%>
+          <span id="form_submit">変更する</span>
+        </div>
+      </label>
+    </div>
+
+    <div class="actions_delete">
+      <label>
+        <% if current_user.id == @post.user_id %>
+          <%= link_to("投稿を削除",post_path(@post),{method: :delete, class: "destroylink",id:"form_actions_delete",data: { confirm: '本当にいいですか?' }}) %>
+        <% end %>
+      </label>
+    </div>
   <%end%>
+  </section>
 </div>
+
+
+
+  <%# <script>
+  $(document).ready(function () {/*DOMをすべて読み込んでから*/
+  var view_box = $('.view_box'); /*inputを囲む一番大きいdiv*/
+
+  $(".file").on('change', function(){ /*input-fileに画像が入ったらイベント発生*/
+    var fileprop = $(this).prop('files')[0];/*prop filesを取得*/
+    var find_img = $(view_box).find('img');/*findでimgを取得*/
+    var reader = new FileReader();/*ファイルを読み込むためのObjectを生成*/
+    console.log(find_img);
+
+     if(find_img.length){
+        find_img.nextAll().remove();
+        find_img.remove();
+     }
+
+    var img = '<img width="20%" alt="" class="img_view" ><a href="#" class="img_del"><i class="far fa-times-circle"></i></a>';
+    
+    view_box.append(img);/*imgを追加*/
+
+    reader.onload = function() {    /*ファイルオブジェクトをloadしたら*/
+      view_box.find('img').attr('src', reader.result);/*imgのsrcに挿入*/
+      img_del(view_box); /*下の関数に渡す*/
+    }
+    reader.readAsDataURL(fileprop);/*srcを表示*/
+  });
+   
+  function img_del(target)
+  {
+     target.find("a.img_del").on('click',function(){/*上から渡されたimgが入ってる*/
+      {
+         $('#img_label').find('input[type=file]').val('');/*inputのtypeを空に parent親要素の取得*/
+         $(this).parent().find('.img_view').remove();/*imgリンクを削除*/
+         $(this).remove();/*aリンクを削除*/
+      }
+
+      return false;
+    });
+  } 
+});
+</script> %>
+

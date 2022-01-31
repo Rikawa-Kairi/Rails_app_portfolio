@@ -17,12 +17,38 @@
 body {
    margin: 0px;
 }
-main {
-  padding-top: 48px;
-}
+
+ .alert{
+   color: white;
+   font-size: 1rem;
+   font-weight: bolder;
+   text-align: center;
+   background-color: #ff333f;
+ }
+
+ .notice {
+   color: white;
+   font-size: 1rem;
+   font-weight: bolder;
+   text-align: center;
+   background-color: rgba(144, 238, 144);
+ }
+
+ #error_explanation {
+   color: white;
+   text-align: center;
+   background-color: #ff333f;
+ }
 
 
+ #error_explanation ul {
+   font-size: 1rem;
+   font-weight: bolder;
+   list-style-type:  none;
+ }
 
-
-
-
+ #restauline {
+   font-size: 1.3rem;
+   font-weight: bolder;
+   
+ }

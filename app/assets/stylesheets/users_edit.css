@@ -1,0 +1,126 @@
+
+
+#devise_edit {
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+#devise_profile_change {
+  width: 100%;
+}
+
+#devise_edit_title {
+  font-size: 2rem;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.field {
+  width: 75%;
+  max-width: 565px;
+  padding-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.actions {
+  width: 75%;
+  height: 55px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 16px 8px;
+  border-radius:10px;
+  border: 1px solid rgb(90, 220, 90);
+  background: rgb(90, 220, 90);
+  text-align: center;
+  margin-top: 50px;
+  max-width: 565px;
+}
+
+.actions_delete {
+  width: 100%;
+  height: 55px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 16px 8px;
+  border-radius:15px;
+  border: 1px solid #ff333f;
+  background: #ff333f;
+  text-align: center;
+  margin-top: 100px;
+  max-width: 565px;
+  margin-bottom: 100px;
+}
+
+.delete_user_edit {
+  width: 75%;
+}
+
+.form_actions_submit {
+  font-size: 1.3rem;
+  font-weight: bolder;
+  display: block;
+  line-height:35px;
+  color: #fff;
+  text-decoration: none;
+}
+
+#form_actions_delete {
+  font-size: 1.3rem;
+  color: #fff;
+  font-weight: bolder;
+  display: block;
+  line-height:35px;
+  text-decoration: none;
+}
+
+
+.field label {
+  font-size: 1.3rem;
+  color: #333;
+}
+
+#user_name {
+  width: 100%;
+  height: 55px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#user_email {
+  width: 100%;
+  height: 55px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#user_password {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#user_password_confirmation {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#user_current_password {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* =============================================================================== */
+
+#login_actions_submit {
+  font-size: 1.3rem;
+  color: #fff;
+  font-weight: bolder;
+  display: block;
+  line-height:35px;
+
+}

@@ -1,0 +1,21 @@
+<div id="room_index_top">
+  <h1 id="show_title">メッセージ</h1>
+  <div id="room_dm_wrapper">
+    <% @rooms.each do |room| %>
+      <div id="room_dm_list">
+        <%= link_to room_path(room.id),class:"dm_link" do %>
+          <div id="dm_list">
+            <div id="dm_left">
+              <%= opponent_user(room) %>
+              <%= most_new_message_preview(room) %>
+              <%= time(room) %>
+            </div>
+            <div id="dm_right">
+              <span>＞</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

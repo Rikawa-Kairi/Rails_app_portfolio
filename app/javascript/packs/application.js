@@ -14,6 +14,7 @@ import "./img"
 
 import "./new"
 import "./edit"
+
 $(function(){
   setTimeout("$('.alert, .notice').fadeOut('slow')", 2000);
 });

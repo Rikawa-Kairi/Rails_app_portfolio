@@ -28,10 +28,30 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @user = User.find(@post.user_id)
+    @post = Post.find(params[:id]) #投稿情報取得
+    pp @post
+    @user = User.find(@post.user_id) #投稿主のデータ取得
     @comments = @post.comments
     @comment = Comment.new
+    @currentUserEntry=Entry.where(user_id: current_user.id) #ログイン主userのroomをすべて取得
+    @userEntry=Entry.where(user_id: @user.id) #投稿主の入っているトークルームを取得
+    if @user.id == current_user.id #投稿主とログイン主のidが等しかったら
+    else
+      @currentUserEntry.each do |cu| #ログイン主の入っているトークルームを
+        @userEntry.each do |u| #投稿主の入っているトークルームを
+          if cu.room_id == u.room_id then #ログ主の入っている部屋と投稿主の入っている部屋が等しかったら
+            @isRoom = true 
+            @roomId = cu.room_id #ログ主のroom_id
+          end
+        end
+      end
+
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def destroy

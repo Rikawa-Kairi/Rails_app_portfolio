@@ -42,7 +42,32 @@
           </div>
           <p class="show_wrapper_title show_wrapper_name">出品者</p>
           <div class="show_wrapper_text">
-            <p><%= @user.name%></p>
+            <div id="show_message">
+              <p><%= @user.name%></p>
+              <% if @user.id == current_user.id %> <%#投稿主とログ主#%>
+              <% else %>
+                <% if @isRoom == true %> <%# @isRoomがあればチャットへを表示#%>
+                  <div id="show_new_message">
+                    <i class="far fa-envelope"></i>
+                    <span id="message"><a href="/rooms/<%= @roomId %>">投稿者にメッセージを送る</a></span>
+                  </div>
+                <% else %>
+                  <%= form_for @room do |f| %> <%# なければcontllorで作成した@room,@entryで#%>
+                    <%= fields_for @entry do |e| %>
+                      <%= e.hidden_field :user_id, :value=> @user.id %> <%# 非表示フォームでuser_idに投稿主のidを#%>
+                      <%# ここに@post.imageでデータを飛ばせばいいんじゃないか %>
+                    <% end %>
+                      <label>
+                        <div class="post_form submit_message_label">
+                            <i class="far fa-envelope"></i>
+                            <%= f.submit "投稿者にメッセージを送る", style:"display:none" %>
+                          <span id="form_submit">投稿者にメッセージを送る</span>
+                        </div>
+                      </label>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
 
@@ -59,7 +84,6 @@
 
   <div id="show_comment_section">
     <p id="show_comment_title">コメント一覧</p>
-
     <div>
       <% @comments.each do |c| %>
         <div id="show_comment_wrapper">

@@ -2,7 +2,6 @@
 <div id="devise_edit">
   <%= render "devise/shared/error_messages", resource: resource %>
   <p id="devise_edit_title">プロフィール変更</p>
-
   <div id="devise_profile_change">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, id: "tests") do |f| %>
 
@@ -70,7 +69,5 @@
     <span id="form_actions_delete">アカウントを削除</span>
   </label>
 </div>
-
-
 
 <%= link_to "Back", '/' %>

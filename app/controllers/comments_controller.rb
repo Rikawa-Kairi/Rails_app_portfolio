@@ -5,9 +5,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_back(fallback_location: root_path)
+      redirect_to post_path(@post),notice: 'コメント投稿しました'
     else
-      redirect_back(fallback_location: root_path)
+      redirect_to post_path(@post),alert: '投稿に失敗しました'
     end
   end
 
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
       @comment.destroy
     redirect_to post_path(@post),notice: 'コメントを削除しました'
     else
-    render post_path(@post)
+      redirect_to post_path(@post),alert: '削除に失敗しました。'
     end
   end
 

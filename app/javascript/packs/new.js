@@ -1,3 +1,6 @@
+
+// new.html.erbに記述
+
 // window.addEventListener('load', function() {
 
 //   // ジャンルの選択肢が変更された際の動作

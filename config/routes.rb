@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       get :mypage
       get :search
       get :inquiry
+      get :agreement
+      get :privacy
     end
   end
   

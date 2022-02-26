@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id]) #投稿情報取得
-    pp @post
+    # pp @post
     @user = User.find(@post.user_id) #投稿主のデータ取得
     @comments = @post.comments
     @comment = Comment.new
@@ -81,6 +81,12 @@ class PostsController < ApplicationController
      unless @post.user_id == current_user.id
      redirect_to root_path, alert: "権限がありません"
    end
+  end
+
+  def agreement
+  end
+  
+  def privacy
   end
 
 

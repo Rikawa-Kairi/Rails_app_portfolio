@@ -95,6 +95,7 @@
 #show_data_user {
   padding: 1rem 0 0.5rem 0;
   border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 2rem;
 }
 
 .show_wrapper_title {
@@ -123,7 +124,7 @@
   text-align: center;
 }
 
-.test {
+.edit_link {
   display: block;
   text-decoration: none;
   color: rgb(90, 220, 90);

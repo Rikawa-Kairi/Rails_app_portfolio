@@ -93,10 +93,8 @@
   object-fit: contain;
 }
 
-
-
-
 .explanation_bottom {
+  padding-bottom: 5rem;
   display: flex;
   justify-content: center;
   background: linear-gradient(90deg,rgb(245, 245, 195) 50%, rgb(225, 245, 225) 50%);

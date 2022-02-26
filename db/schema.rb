@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_02_203244) do
+ActiveRecord::Schema.define(version: 2022_02_14_002705) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "comment_content"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2022_02_02_203244) do
     t.bigint "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "post_id"
+    t.index ["post_id"], name: "index_entries_on_post_id"
     t.index ["room_id"], name: "index_entries_on_room_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
   end
@@ -76,6 +78,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_203244) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "entries", "posts"
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
   add_foreign_key "messages", "rooms"

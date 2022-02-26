@@ -16,7 +16,7 @@
     <header>
       <div id='header_main'>
         <div id='header_left'>
-          <p id='header_img'> <%= link_to image_tag('ggg.PNG'), root_path %> </p>
+          <p id='header_img'> <%= link_to image_tag('title.png'), root_path %> </p>
         </div>
         <div id='header_center'>
             <%= form_with url: search_posts_path, id: "form_f",method: :get, local: true do |f| %>
@@ -63,6 +63,18 @@
       <p class="alert"><%= alert %></p>
       <%= yield %>
     </main>
+    <footer>
+      <div id="fot_main">
+        <ul id="fot_center">
+          <li><%= link_to '利用契約', agreement_posts_path %></li>
+          <li><%= link_to 'プライバシーポリシー', privacy_posts_path %></li>
+          <li><%= link_to 'TOP', root_path %></li>
+        </ul>
+      <div>
+      <div id="fot_bottom">
+        <p id="fot_p">Copyright © 2022 ぐるめらいん</p>
+      </div>
+    </footer>
     <script>
       $(function () {
         $('.js-btn').on('click', function () {        // js-btnクラスをクリックすると、

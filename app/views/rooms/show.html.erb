@@ -1,5 +1,12 @@
 <div id="show_comment_section">
   <div id="show_comment_dm_list">
+    <% @anotherEntries.each do |e| %>
+      <% if e.post.image? %>
+        <%= link_to image_tag(e.post.image.to_s, id:"show_img"), root_path %>
+      <% else %>
+         <%= link_to image_tag("y0974.png", id:"show_img_default"), root_path %>
+      <% end %>
+    <% end %>
     <% if @messages.present? %>
       <% @messages.each do |m| %>
         <div class="show_comment_wrapper room_dm_wrapper">
@@ -16,24 +23,23 @@
       <h3 class="text-center">メッセージはまだありません</h3>
     <% end %>
   </div>
-
     <div id="room_dm_post">
-      <%= form_with model: @message do |f| %>
-      <div id="dm_post">
-      <% @anotherEntries.each do |e| %>
-        <%= f.text_area :content, placeholder: "#{e.user.name}さんにメッセージ", id:"dm_text_area" %>
-        <%# <p id="comment_area_limit">1000文字まで</p> %>
-        <%= f.hidden_field :room_id, value: @room.id %> 
-        <div id="room_dm_submit">
-          <label for="comment_submit">
-            <div id="comment_submit_section">
-              <%= f.submit '送信する', id:"comment_submit", style:"display:none"%>
-              <span id="comment_submit_span">送信する</span>
+      <%= form_with model: @message, local: true do |f| %>
+        <div id="dm_post">
+          <% @anotherEntries.each do |e| %>
+            <%= f.text_area :content, placeholder: "#{e.user.name}さんにメッセージ", id:"dm_text_area" %>
+            <%# <p id="comment_area_limit">1000文字まで</p> %>
+            <%= f.hidden_field :room_id, value: @room.id %> 
+            <div id="room_dm_submit">
+              <label for="comment_submit">
+                <div id="comment_submit_section">
+                  <%= f.submit '送信する', id:"comment_submit", style:"display:none"%>
+                  <span id="comment_submit_span">送信する</span>
+                </div>
+              </label>
             </div>
-          </label>
+          <% end %>
         </div>
-      <% end %>
-      </div>
       <% end %>
     </div>
     
@@ -41,11 +47,9 @@
     <label>
     <% @entries.each do |e| %>
       <% if current_user.id ==  e.user_id %>
-        <%= link_to("メッセージを削除",room_path(@room),{method: :delete, class: "destroylink",id:"form_actions_delete",data: { confirm: '本当にいいですか?' }}) %>
+        <%= link_to("トークルームを削除",room_path(@room),{method: :delete, class: "destroylink",id:"form_actions_delete",data: { confirm: 'このトークルームを削除します、本当にいいですか?' }}) %>
       <% end %>
     <% end %>
     </label>
   </div>
 </div>
-
-<%= link_to "ユーザー一覧に戻る", rooms_path %>

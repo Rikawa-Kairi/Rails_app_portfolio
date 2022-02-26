@@ -2,20 +2,51 @@
   <h1 id="show_title">メッセージ</h1>
   <div id="room_dm_wrapper">
     <% @rooms.each do |room| %>
-      <div id="room_dm_list">
-        <%= link_to room_path(room.id),class:"dm_link" do %>
-          <div id="dm_list">
-            <div id="dm_left">
-              <%= opponent_user(room) %>
-              <%= most_new_message_preview(room) %>
-              <%= time(room) %>
+      <% @anotherEntries.each do |e| %>
+        <% if room.id == e.room_id %>
+          <% if e.post.image? %>
+            <div id="room_dm_list">
+              <%= link_to room_path(room.id),class:"dm_link" do %>
+                <div id="dm_list">
+                  <div id="dm_left">
+                    <div id="dm_list_img">
+                    <%= image_tag(e.post.image.url, id:"room_index_img") %>
+                    </div>
+                    <div id="dm_list_content">
+                      <%= opponent_user(room) %>
+                      <%= most_new_message_preview(room) %>
+                      <%= time(room) %>
+                    </div>
+                  </div>
+                  <div id="dm_right">
+                    <span>＞</span>
+                  </div>
+                </div>
+              <% end %>
             </div>
-            <div id="dm_right">
-              <span>＞</span>
+          <% else %>
+            <div id="room_dm_list">
+              <%= link_to room_path(room.id),class:"dm_link" do %>
+                <div id="dm_list">
+                  <div id="dm_left">
+                    <div id="dm_list_img">
+                      <%= image_tag("y0974.png", id:"room_index_img")%>
+                    </div>
+                    <div id="dm_list_content">
+                      <%= opponent_user(room) %>
+                      <%= most_new_message_preview(room) %>
+                      <%= time(room) %>
+                    </div>
+                  </div>
+                  <div id="dm_right">
+                    <span>＞</span>
+                  </div>
+                </div>
+              <% end %>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

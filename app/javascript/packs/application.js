@@ -11,7 +11,6 @@ require("channels")
 require('jquery')
 
 import "./img"
-
 import "./new"
 import "./edit"
 

@@ -17,7 +17,6 @@
 
     <section id="post_show_data">
       <div id="show_data_list">
-
         <div id="show_top_title">
           <p class="show_data_title"><%= @post.title%></p>
           <div class="show_data_price">
@@ -55,7 +54,7 @@
                   <%= form_for @room do |f| %> <%# なければcontllorで作成した@room,@entryで#%>
                     <%= fields_for @entry do |e| %>
                       <%= e.hidden_field :user_id, :value=> @user.id %> <%# 非表示フォームでuser_idに投稿主のidを#%>
-                      <%# ここに@post.imageでデータを飛ばせばいいんじゃないか %>
+                      <%= e.hidden_field :post_id, :value=> @post.id %>
                     <% end %>
                       <label>
                         <div class="post_form submit_message_label">
@@ -76,7 +75,7 @@
     
     <div class = "edit_bot">
       <% if current_user.id == @post.user_id %>
-        <p class="show_edit_bot"><%= link_to("商品の編集",edit_post_path(@post),data: {"turbolinks" => false}, class:"test") %></p>
+        <p class="show_edit_bot"><%= link_to("商品の編集",edit_post_path(@post),data: {"turbolinks" => false}, class:"edit_link") %></p>
       <% end %>
     </div>
   </div>
@@ -104,7 +103,7 @@
     </div>
     
     <div id="show_comment_post">
-      <%= form_with model: [@post, @comment] do |f| %>
+      <%= form_with model: [@post, @comment], local: true do |f| %>
         <%= f.text_area :comment_content, placeholder: "コメントする", id:"comment_text_area" %>
         <p id="comment_area_limit">1000文字まで</p>
         <%= f.hidden_field :post_id, value: @post.id %> 
@@ -119,6 +118,5 @@
       <% end %>
     </div>
     <div>
-    <%=link_to("戻る",root_path,id:"ts")%>
   </div>
 </div>

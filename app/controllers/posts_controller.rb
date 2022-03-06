@@ -89,8 +89,6 @@ class PostsController < ApplicationController
   def privacy
   end
 
-
-  
   private
   def post_params
     params.require(:post).permit(:title, :content, :price, :image_name, :image, :prefectures, :city_id, :town_id ).merge(user_id: current_user.id)

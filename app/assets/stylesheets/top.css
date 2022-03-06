@@ -59,8 +59,8 @@ button {
   justify-content: center;
   width: 33%;
   height: 100%;
-  /* z-index: 5; */
 }
+
 #form_f {
   display: flex;
   width: 100%;
@@ -112,10 +112,6 @@ button {
   min-width: 110px;
 }
 
-main {  /*mainタグを引き下げ*/
-  padding-top: 68px;
-} 
-
 #header_list {
   display: flex;
   list-style: none;
@@ -133,14 +129,6 @@ main {  /*mainタグを引き下げ*/
 
 /**************** 以下、ハンバーガーボタンのスタイリング ****************/
 .btn {
-  /* ボタンの配置位置  */
-
-/* =================================== */
-  /* position: fixed;
-  top: 22px;
-  right: 29px; */
-/* =================================== */
-
   /* 最前面に */
   z-index: 1;
   /* ボタンの大きさ  */
@@ -198,7 +186,6 @@ main {  /*mainタグを引き下げ*/
   transform: rotate(-45deg);
 }
 
-
 /**************** ここまで、ハンバーガーボタンのスタイリング ****************/
 
 /**************** 以下、メニューのスタイリング ****************/
@@ -216,6 +203,7 @@ main {  /*mainタグを引き下げ*/
   color: #efefef;
   transition: .3s;
 }
+
 .menu-list {
   /* メニューテキスト位置をリスト内中心に */
   display: flex;
@@ -224,6 +212,7 @@ main {  /*mainタグを引き下げ*/
   width: 100%;
   height: 100%;
 }
+
 .menu-list:hover {
   background-color: rgba(255, 255, 255, .5);
   color: #333;
@@ -240,7 +229,6 @@ main {  /*mainタグを引き下げ*/
 .menu-list a:hover {
   text-decoration: underline;
 }
-
 
 /***** メニューオープン時位置0にして画面内に *****/
 .menu.open {
@@ -270,9 +258,6 @@ main {  /*mainタグを引き下げ*/
     top: 30%;
     left: 70%;
   }
-  
-
-
 }
 
 /* 1280px〜：PC
@@ -321,5 +306,4 @@ main {  /*mainタグを引き下げ*/
     /* z-index: 5; */
     margin-right: 50vw;
   }
-
 }

@@ -5,7 +5,6 @@ $(document).ready(function () {/*DOMをすべて読み込んでから*/
     var fileprop = $(this).prop('files')[0];/*prop filesを取得*/
     var find_img = $(view_box).find('img');/*findでimgを取得*/
     var reader = new FileReader();/*ファイルを読み込むためのObjectを生成*/
-    // console.log(find_img);
 
      if(find_img.length){
         find_img.nextAll().remove();

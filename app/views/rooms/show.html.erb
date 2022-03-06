@@ -33,7 +33,7 @@
             <div id="room_dm_submit">
               <label for="comment_submit">
                 <div id="comment_submit_section">
-                  <%= f.submit '送信する', id:"comment_submit", style:"display:none"%>
+                  <%= f.submit "送信する", id:"comment_submit", style:"display:none"%>
                   <span id="comment_submit_span">送信する</span>
                 </div>
               </label>
@@ -42,12 +42,12 @@
         </div>
       <% end %>
     </div>
-    
+
   <div id="room_actions_delete">
     <label>
     <% @entries.each do |e| %>
       <% if current_user.id ==  e.user_id %>
-        <%= link_to("トークルームを削除",room_path(@room),{method: :delete, class: "destroylink",id:"form_actions_delete",data: { confirm: 'このトークルームを削除します、本当にいいですか?' }}) %>
+        <%= link_to("トークルームを削除",room_path(@room),{method: :delete, class: "destroylink",id:"form_actions_delete",data: { confirm: "このトークルームを削除します、本当にいいですか?" }}) %>
       <% end %>
     <% end %>
     </label>

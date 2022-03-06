@@ -1,5 +1,5 @@
+// 変更なし
 window.addEventListener('load', function() {
-
   hidden_town_id = document.getElementById('hidden_town_id');
   // console.log(hidden_town_id.value);
   // ジャンルの選択肢が変更された際の動作
@@ -15,10 +15,8 @@ window.addEventListener('load', function() {
   if (city_category.value) {
     changeCategory();
   }
-  
   city_category.onchange = changeCategory;
 })
-
 
 // ジャンルの選択肢が変更された際の動作
 function city_mix(city) {

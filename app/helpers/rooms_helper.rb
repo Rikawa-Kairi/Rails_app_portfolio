@@ -36,8 +36,4 @@ module RoomsHelper
     # 名前を表示
     tag.p "#{name}", class: "dm_list__content__link__box__name"
   end
-
-
-  
-  
 end

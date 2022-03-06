@@ -1,19 +1,29 @@
 #main_inquiry_top {
   margin: 0 0.5rem 0 0.5rem;
-  
 }
 
 #inquiry_top_title {
+  /* 一番親 */
   margin-top: 2rem;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
 }
 
-#inquiry_top_title h2 {
-  padding-top: 6px;
+#inquiry_img_title {
+  /* コンテンツの親 */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#inquiry_img_title img{
+  width: 30vw;
+  max-width: 200px;
+}
+imgをpositionで揃える。
+#p {
+  /* とは？ */
+  font-size: 1.5rem;
+  padding-bottom: 3px;
 }
 
 #inquiry_top_about {
@@ -52,8 +62,6 @@
   width: 50%;
   background-color: rgb(225, 245, 225);
 }
-
-
 
 .explanation_left {
   background-color: rgb(255, 255, 245);
@@ -102,8 +110,6 @@
 
 .four {
   width: 50%;
-
-
 } 
 
 

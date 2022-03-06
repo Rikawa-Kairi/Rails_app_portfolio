@@ -47,6 +47,8 @@
   padding-right: 1rem;
 }
 
+/* 800px〜959px：タブレット
+------------------------------ */
 @media (min-width:800px) and (max-width:959px) {
   .agreement_section {
     margin-left: auto;

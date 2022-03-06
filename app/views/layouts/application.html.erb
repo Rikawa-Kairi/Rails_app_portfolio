@@ -13,72 +13,69 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header>
-      <div id='header_main'>
-        <div id='header_left'>
-          <p id='header_img'> <%= link_to image_tag('title.png'), root_path %> </p>
-        </div>
-        <div id='header_center'>
-            <%= form_with url: search_posts_path, id: "form_f",method: :get, local: true do |f| %>
-              <%= f.text_field :keyword, id:"text_f", value: @keyword, placeholder: "キーワード検索"%>
-              <%= f.button :type => "submit", id: "button_f" do %>
-                <i class="fas fa-search"></i>
+    <div class="container">
+      <header>
+        <div id="header_main">
+          <div id="header_left">
+            <p id="header_img"> <%= link_to image_tag("title.png"), root_path %> </p>
+          </div>
+          <div id="header_center">
+              <%= form_with url: search_posts_path, id: "form_f",method: :get, local: true do |f| %>
+                <%= f.text_field :keyword, id:"text_f", value: @keyword, placeholder: "キーワード検索"%>
+                <%= f.button :type => "submit", id: "button_f" do %>
+                  <i class="fas fa-search"></i>
+                <% end %>
               <% end %>
-            <% end %>
+          </div>
+          <div id="header_right">
+            <nav id="header_nav">
+              <ul id="header_list">
+                <% if user_signed_in? %>
+                  <button type="button" class="btn js-btn">
+                    <span class="btn-line"></span>
+                  </button>
+                <% else %>
+                  <li class="header_menu"> <%= link_to "ログイン", new_user_session_path %> </li>
+                <% end %>
+            </nav>
+            <nav id="menu-nav">
+              <ul class="menu">
+                <% if user_signed_in? %>
+                  <li class="menu-list"> <%= link_to "新規投稿","/posts/new", data: {"turbolinks" => false} %> </li>
+                  <li class="menu-list"> <%= link_to "投稿一覧",mypage_posts_path %></li>
+                  <li class="menu-list"> <%= link_to "初めての方",  inquiry_posts_path%> </li>
+                  <li class="menu-list"> <%= link_to "アカウント", edit_user_registration_path%> </li>
+                  <li class="menu-list"> <%= link_to "メッセージ", rooms_path%> </li>
+                <% else %>
+                  <li class="menu-list"> <%= link_to "マイページ","/"%> </li>
+                  <li class="menu-list"> <%= link_to "新規会員登録", new_user_registration_path %> </li>
+                  <li class="menu-list"> <%= link_to "ログイン", new_user_session_path %> </li>
+                <% end %>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <div id='header_right'>
-          <nav id="header_nav">
-            <ul id="header_list">
-              <% if user_signed_in? %>
-                <button type="button" class="btn js-btn">
-                  <span class="btn-line"></span>
-                </button>
-              <% else %>
-                <li class="header_menu"> <%= link_to 'ログイン', new_user_session_path %> </li>
-              <% end %>
-          </nav>
-
-          <nav id="menu-nav">
-            <ul class="menu">
-              <% if user_signed_in? %>
-                <li class="menu-list"> <%= link_to '新規投稿','/posts/new', data: {"turbolinks" => false} %> </li>
-                <%# <li class="menu-list"> <%= link_to 'プロフィール変更', edit_user_registration_path %> </li> 
-                <li class="menu-list"> <%= link_to "投稿一覧",mypage_posts_path %></li>
-                <%# <li class="menu-list"> <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> </li> 
-                <li class="menu-list"> <%= link_to "初めての方",  inquiry_posts_path%> </li>
-                <li class="menu-list"> <%= link_to "アカウント", edit_user_registration_path%> </li>
-                <li class="menu-list"> <%= link_to "メッセージ", rooms_path%> </li>
-              <% else %>
-                <li class="menu-list"> <%= link_to "マイページ",'/'%> </li>
-                <li class="menu-list"> <%= link_to '新規会員登録', new_user_registration_path %> </li>
-                <li class="menu-list"> <%= link_to 'ログイン', new_user_session_path %> </li>
-              <% end %>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
-    <main>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-    </main>
-    <footer>
-      <div id="fot_main">
+      </header>
+      <main>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </main>
+      <footer>
         <ul id="fot_center">
-          <li><%= link_to '利用契約', agreement_posts_path %></li>
-          <li><%= link_to 'プライバシーポリシー', privacy_posts_path %></li>
-          <li><%= link_to 'TOP', root_path %></li>
+          <li><%= link_to "利用契約", agreement_posts_path %></li>
+          <li><%= link_to "プライバシーポリシー", privacy_posts_path %></li>
+          <li><%= link_to "TOP", root_path %></li>
         </ul>
-      <div>
-      <div id="fot_bottom">
-        <p id="fot_p">Copyright © 2022 ぐるめらいん</p>
-      </div>
-    </footer>
+        <div id="fot_bottom">
+          <p id="fot_p">Copyright © 2022 ぐるめらいん</p>
+        </div>
+      </footer>
+    </div>
     <script>
       $(function () {
-        $('.js-btn').on('click', function () {        // js-btnクラスをクリックすると、
-          $('.menu , .btn-line').toggleClass('open'); // メニューとバーガーの線にopenクラスをつけ外しする
+        $(".js-btn").on("click", function () {
+          $(".menu , .btn-line").toggleClass("open");
         })
       });
     </script>

@@ -69,17 +69,15 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
-    
+
     <div class = "edit_bot">
       <% if current_user.id == @post.user_id %>
         <p class="show_edit_bot"><%= link_to("商品の編集",edit_post_path(@post),data: {"turbolinks" => false}, class:"edit_link") %></p>
       <% end %>
     </div>
   </div>
-
 
   <div id="show_comment_section">
     <p id="show_comment_title">コメント一覧</p>
@@ -92,7 +90,7 @@
             <div id="show_comment_content_secondary">
               <p id="show_comment_time"><%= time_ago_in_words(c.updated_at)+"前"%></p>
               <% if c.user.id == current_user.id %>
-                <%= link_to post_comment_path(@post, c), {method: :delete, data: {confirm: 'コメントを削除しますか？'}} do %>
+                <%= link_to post_comment_path(@post, c), {method: :delete, data: {confirm: "コメントを削除しますか？"}} do %>
                   <i class="fas fa-trash-alt"></i>
                 <%end%>
               <%end %>
@@ -110,7 +108,7 @@
         <div id="show_comment_submit">
           <label for="comment_submit">
             <div id="comment_submit_section">
-              <%= f.submit 'コメントする', id:"comment_submit", style:"display:none"%>
+              <%= f.submit "コメントする", id:"comment_submit", style:"display:none"%>
               <span id="comment_submit_span">コメントを送信する</span>
             </div>
           </label>

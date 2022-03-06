@@ -1,15 +1,15 @@
 <h1 id="mypage_title">出品した商品</h1>
 <div id="mypage_post_top">
-  <section id='mypage_post_list'>
+  <section id="mypage_post_list">
     <% @posts.each do |post| %>
       <% if post.image? %>
         <div id="mypage_list_wrapper">
           <%= link_to post_path(post), id: "mypage_list_link" do %>
             <div id="mypage_list_group">
-              <div id='mypage_list'>
+              <div id="mypage_list">
                 <div id="mypage_image_section">
                   <%= image_tag post.image.to_s, id:"post_image_mypage" %>
-                  <p id='mypage_list_city_id'><%= post.city_id%></p>
+                  <p id="mypage_list_city_id"><%= post.city_id%></p>
                 </div>
                 <div id="mypage_content_section">
                   <p id="mypage_title"><%= post.title.truncate(30) %></p>
@@ -26,11 +26,11 @@
       <% else %>
         <div id="mypage_list_wrapper">
           <%= link_to post_path(post), id: "mypage_list_link" do %>
-            <div id='mypage_list_group'>
-              <div id='mypage_list'>
+            <div id="mypage_list_group">
+              <div id="mypage_list">
                 <div id="mypage_image_section">
                   <%= image_tag "y0974.png", id:"post_image_default_mypage" %>
-                  <p id='mypage_list_city_id'><%= post.city_id%></p>
+                  <p id="mypage_list_city_id"><%= post.city_id%></p>
                 </div>
                 <div id="mypage_content_section">
                   <p id="mypage_title"><%= post.title.truncate(30) %></p>
@@ -47,6 +47,4 @@
       <% end %>
     <% end %>
   </section>
-
-
 </div>

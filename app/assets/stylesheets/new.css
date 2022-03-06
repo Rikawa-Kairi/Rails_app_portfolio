@@ -1,15 +1,3 @@
-
-/*====================
-スマホを基本設計にする
- - 〜479px：スマートフォン縦
- - 480px〜599px：スマートフォン横
- - 600px〜959px：タブレット
- - 960px〜1279px：小型PC
- - 1280px〜：大型PC
-====================*/
-  
-/* 〜479px：SP縦
------------------------------- */
 #main_post_form {
   margin: 0 0.5rem 0 0.5rem;
 }
@@ -27,7 +15,7 @@
   justify-content: center;
 }
 
-#form_main { /*formで一番*/
+#form_main {
   width: 80%;
 }
 
@@ -40,7 +28,7 @@
   color: #333;
 }
 
-.form_section {/*---ここでnew.erbの幅が調節---*/
+.form_section {
   max-width: 565px;
   margin-left: auto;
   margin-right: auto;
@@ -93,16 +81,6 @@ label {
   font-weight: bolder;
 }
 
-/* #post_form_submit {
-margin-top: 300px;
-} */
-
-/*#post_image { なんだコレ
-  border-color: red;
-  width: 100%;
-  border: 1px solid #bbb;
-}*/
-
 #img_label {
   width: 100%;
   height: 55px;
@@ -115,9 +93,7 @@ margin-top: 300px;
   justify-content: center;
   align-items: center;
 }
-.view_box {
 
-}
 .fa-camera {
   color:rgb(90, 220, 90);
   
@@ -135,7 +111,7 @@ margin-top: 300px;
   justify-content: center;
   align-items: center;
   margin-top: 100px;
-}/*formにバリデーションをかける*/
+}
 
 #form_submit {
   color: #fff;
@@ -147,7 +123,6 @@ margin-top: 300px;
   border: 1px solid #ff333f;
   background: #ff333f;
   color: #fff;
-
 }
 
 #alert_message {
@@ -168,7 +143,6 @@ margin-top: 300px;
 
 .field_with_errors {
   display: contents;
-
 }
 
 .img_preview_box {

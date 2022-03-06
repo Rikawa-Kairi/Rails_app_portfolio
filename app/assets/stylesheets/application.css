@@ -15,56 +15,65 @@
  */
 
 body {
-   margin: 0px;
+  margin: 0px;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {  /*mainタグを引き下げ*/
+  padding-top: 68px;
+  margin-bottom: 30%;
+} 
+
 .alert{
-   color: white;
-   font-size: 1rem;
-   font-weight: bolder;
-   text-align: center;
-   background-color: #ff333f;
+  color: white;
+  font-size: 1rem;
+  font-weight: bolder;
+  text-align: center;
+  background-color: #ff333f;
 }
 
 .notice {
-   color: white;
-   font-size: 1rem;
-   font-weight: bolder;
-   text-align: center;
-   background-color: rgb(161, 236, 161);
+  color: white;
+  font-size: 1rem;
+  font-weight: bolder;
+  text-align: center;
+  background-color: rgb(161, 236, 161);
 }
 
 #error_explanation {
-   color: white;
-   text-align: center;
-   background-color: #ff333f;
+  color: white;
+  text-align: center;
+  background-color: #ff333f;
 }
 
-
 #error_explanation ul {
-   font-size: 1rem;
-   font-weight: bolder;
-   list-style-type:  none;
+  font-size: 1rem;
+  font-weight: bolder;
+  list-style-type:  none;
 }
 
 #restauline {
-   font-size: 1.3rem;
-   font-weight: bolder;
-   
+  font-size: 1.3rem;
+  font-weight: bolder;
 }
 
-#fot_main {
-  margin-top: 13rem;
-  height: 150px;
+footer {
+  margin-top: auto;
+  margin-bottom: 2px;
   background-color: rgb(248, 248, 240);
   box-shadow: 0 0 2px #999;
 }
 
 #fot_center {
-   list-style-type: none;
-   display: flex;
-   justify-content: space-evenly;
-   padding-top: 5rem;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 5rem;
 }
 
 #fot_center a{
@@ -72,7 +81,7 @@ body {
 }
 
 #fot_p {
+  padding-top: 1.5rem;
   text-align: center;
   color: #999;
-  padding-top: 40px;
 }

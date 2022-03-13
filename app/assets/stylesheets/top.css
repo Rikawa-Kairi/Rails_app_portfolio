@@ -199,7 +199,7 @@ button {
   right: -70%;
   width: 70%;
   height: 100vh;
-  background-color:   rgb(225, 245, 225, 0.9);
+  background-color: rgba(225, 245, 225, 0.9);
   color: #efefef;
   transition: .3s;
 }

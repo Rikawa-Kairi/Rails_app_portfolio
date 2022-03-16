@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 2022_02_14_002705) do
     t.string "city_id"
     t.string "town_id"
     t.string "prefectures"
-    t.integer "user_id"
     t.string "image_name"
   end
 
